@@ -74,7 +74,8 @@ class ArticleDeatils extends StatelessWidget {
             ),
           ),
         )),
-        Text("")
+        Text(
+            "Aliqua veniam deserunt sit culpa dolor commodo. Reprehenderit pariatur reprehenderit nisi nulla fugiat tempor officia id. Ea veniam anim exercitation Lorem deserunt. Magna dolor laboris consequat officia proident sunt magna laboris reprehenderit ipsum laborum nisi. Laborum irure ad dolore consequat mollit duis reprehenderit amet ullamco deserunt occaecat.")
       ],
     ));
   }
