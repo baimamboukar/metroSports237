@@ -50,7 +50,42 @@ class News extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              Feed(),
+              SingleChildScrollView(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        Icon(LineIcons.fire),
+                        Text("Latest news "),
+                      ],
+                    ),
+                  ),
+                  Container(child: Feed()),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        Icon(LineIcons.fire),
+                        Text("Latest news "),
+                      ],
+                    ),
+                  ),
+                  Container(child: Feed()),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        Icon(LineIcons.fire),
+                        Text("Latest news "),
+                      ],
+                    ),
+                  ),
+                  Container(child: Feed())
+                ],
+              )),
               Icon(LineIcons.ad),
               Icon(LineIcons.ad),
               Icon(LineIcons.ad),

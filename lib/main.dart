@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:metro_sports/screens/news.dart';
 
 import 'widgets/widgets.dart';
 
 void main() {
-  runApp(MetroSports237());
+  runApp(ProviderScope(child: MetroSports237()));
 }
 
 class MetroSports237 extends StatelessWidget {
@@ -16,7 +18,7 @@ class MetroSports237 extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.green,
             textTheme:
-                GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)),
+                GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme)),
         home: Home());
   }
 }
@@ -27,12 +29,14 @@ final List<Widget> screens = [
   Scaffold(),
   Scaffold(),
 ];
+final indexProvider = StateProvider<int>((ref) => 0);
 
-class Home extends StatelessWidget {
+class Home extends HookWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final index = useProvider(indexProvider);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
             onPressed: () => print("action..."),
@@ -60,7 +64,7 @@ class Home extends StatelessWidget {
               ),
             ]),
         drawer: Drawer(),
-        body: IndexedStack(index: 0, children: [...screens]),
+        body: IndexedStack(index: index.state, children: [...screens]),
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
           notchMargin: 3.0,
@@ -69,22 +73,22 @@ class Home extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(
-                  LineIcons.newspaperAlt,
-                  size: 24.0,
+                NavItem(
+                  icon: LineIcons.newspaperAlt,
+                  position: 0,
                 ),
-                Icon(
-                  LineIcons.basketballBall,
-                  size: 24.0,
+                NavItem(
+                  icon: LineIcons.basketballBall,
+                  position: 1,
                 ),
-                Icon(
-                  LineIcons.television,
-                  size: 24.0,
+                NavItem(
+                  icon: LineIcons.television,
+                  position: 2,
                 ),
-                Icon(
-                  LineIcons.barChartAlt,
-                  size: 24.0,
-                ),
+                NavItem(
+                  icon: LineIcons.barChart,
+                  position: 3,
+                )
               ],
             ),
           ),
@@ -92,30 +96,27 @@ class Home extends StatelessWidget {
   }
 }
 
-class BottomNavItem extends StatelessWidget {
-  final bool isActive;
-  final String label;
+class NavItem extends HookWidget {
   final IconData icon;
-  const BottomNavItem(
-      {Key? key,
-      required this.isActive,
-      required this.label,
-      required this.icon})
+  final int position;
+  const NavItem({Key? key, required this.icon, required this.position})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-          color: !isActive ? Colors.white : Colors.green.shade100,
-          child: Row(
-            children: [
-              Icon(icon, color: isActive ? Colors.green : Colors.black45),
-              Text(label,
-                  style: TextStyle(
-                      color: isActive ? Colors.green : Colors.black45))
-            ],
-          )),
+    final index = useProvider(indexProvider);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        IconButton(
+          icon: Icon(icon,
+              size: 24.0,
+              color: position == index.state ? Colors.green : Colors.black54),
+          onPressed: () => index.state = position,
+        ),
+        Text("Home")
+      ],
     );
   }
 }
