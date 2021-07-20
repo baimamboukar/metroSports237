@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:metro_sports/screens/news.dart';
-
 import 'widgets/widgets.dart';
 
 void main() {
@@ -23,6 +22,10 @@ class MetroSports237 extends StatelessWidget {
   }
 }
 
+/*
+  ---------NAVIGATION SCREENS-------------
+  This list contains the widgets corresponding to the navigation screens
+*/
 final List<Widget> screens = [
   News(),
   Scaffold(),
@@ -105,18 +108,11 @@ class NavItem extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final index = useProvider(indexProvider);
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        IconButton(
-          icon: Icon(icon,
-              size: 24.0,
-              color: position == index.state ? Colors.green : Colors.black54),
-          onPressed: () => index.state = position,
-        ),
-        Text("Home")
-      ],
+    return IconButton(
+      icon: Icon(icon,
+          size: 24.0,
+          color: position == index.state ? Colors.green : Colors.black54),
+      onPressed: () => index.state = position,
     );
   }
 }

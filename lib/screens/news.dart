@@ -54,35 +54,12 @@ class News extends StatelessWidget {
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      children: [
-                        Icon(LineIcons.fire),
-                        Text("Latest news "),
-                      ],
-                    ),
-                  ),
+                  HeadingText(text: "Trending news", icon: LineIcons.fire),
                   Container(child: Feed()),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      children: [
-                        Icon(LineIcons.fire),
-                        Text("Latest news "),
-                      ],
-                    ),
-                  ),
+                  HeadingText(text: "Mercato news", icon: LineIcons.syncIcon),
                   Container(child: Feed()),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      children: [
-                        Icon(LineIcons.fire),
-                        Text("Latest news "),
-                      ],
-                    ),
-                  ),
+                  HeadingText(
+                      text: "Latest news", icon: LineIcons.newspaperAlt),
                   Container(child: Feed())
                 ],
               )),
@@ -109,6 +86,33 @@ class Feed extends StatelessWidget {
         itemBuilder: (context, index) {
           return ArticleTrailer(article: _article);
         },
+      ),
+    );
+  }
+}
+
+class HeadingText extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  const HeadingText({Key? key, required this.icon, required this.text})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.green, size: 24.0),
+          const SizedBox(
+            width: 12.0,
+          ),
+          Text(text,
+              style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 23.0,
+                  fontWeight: FontWeight.bold))
+        ],
       ),
     );
   }
