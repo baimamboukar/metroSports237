@@ -45,8 +45,7 @@ class Home extends HookWidget {
         floatingActionButton: FloatingActionButton(
             onPressed: () => print("action..."),
             child: CircleAvatar(
-                backgroundColor: Colors.yellow,
-                child: Icon(LineIcons.identificationBadge))),
+                backgroundColor: Colors.yellow.shade200, child: Text("💰"))),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         appBar: AppBar(
             leadingWidth: 25.0,
