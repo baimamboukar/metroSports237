@@ -49,7 +49,7 @@ class ArticleDeatils extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Leciester City won its first premier League Trophy",
+                    article.title,
                     style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
@@ -61,8 +61,8 @@ class ArticleDeatils extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Author : Loremson Ipsumson"),
-                      Text("20 Dec 2026")
+                      Text("Author : ${article.author}"),
+                      Text(article.date.toString())
                     ],
                   ),
                   Row(
@@ -71,18 +71,18 @@ class ArticleDeatils extends StatelessWidget {
                       ActionButton(
                           icon: LineIcons.eye,
                           color: Palette.secondary,
-                          label: "120 views",
-                          callback: () => print("Liked")),
+                          label: "${article.viewsCount} views",
+                          callback: () => print("viewed")),
                       ActionButton(
                           icon: LineIcons.heartAlt,
                           color: Palette.primary,
-                          label: "10 likes",
+                          label: "${article.likesCount} likes",
                           callback: () => print("Liked")),
                       ActionButton(
                           icon: LineIcons.shareSquare,
                           color: Palette.warning,
-                          label: "02 shares",
-                          callback: () => print("Liked"))
+                          label: "${article.sharesCount} shares",
+                          callback: () => print("Shared"))
                     ],
                   ),
                 ],
@@ -105,7 +105,20 @@ class ArticleDeatils extends StatelessWidget {
                 Ad sit reprehenderit sunt sunt ipsum minim cupidatat commodo irure proident fugiat. In consequat sit officia aute nisi nulla aute nisi. Deserunt excepteur anim mollit ullamco elit exercitation nisi amet occaecat elit. Tempor Lorem deserunt officia velit veniam et dolor nostrud voluptate incididunt elit incididunt.
                 Aliqua veniam deserunt sit culpa dolor commodo. Reprehenderit pariatur reprehenderit nisi nulla fugiat tempor officia id. Ea veniam anim exercitation Lorem deserunt. Magna dolor laboris consequat officia proident sunt magna laboris reprehenderit ipsum laborum nisi. Laborum irure ad dolore consequat mollit duis reprehenderit amet ullamco deserunt occaecat."""),
           ),
-        )
+        ),
+        SliverToBoxAdapter(
+            child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Container(
+              child: TextField(
+                maxLines: 6,
+                decoration: InputDecoration(hintText: "Leave a comment..."),
+              ),
+              height: 100.0,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(22.0),
+                  border: Border.all(color: Palette.primary, width: 0.75))),
+        ))
       ],
     ));
   }

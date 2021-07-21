@@ -11,7 +11,9 @@ class ArticleTrailer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(() => ArticleDeatils(article: article)),
+      onTap: () => Get.to(() => ArticleDeatils(article: article),
+          transition: Transition.leftToRightWithFade,
+          duration: Duration(milliseconds: 700)),
       child: Container(
         child: ListTile(
             leading: Container(

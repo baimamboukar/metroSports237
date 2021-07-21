@@ -4,13 +4,14 @@ import 'package:metro_sports/models/models.dart';
 import 'package:metro_sports/widgets/widgets.dart';
 
 var _article = Article(
-    title: "Leicester City won PL for the 1st time",
+    title: "Leicester confirms signin a player form RZ Salsbourg",
     subtitle: "Mercato news",
+    author: "Loremson Ipsumson",
     imagePath: "assets/images/leicester-signin.png",
-    viewsCount: 0,
-    likesCount: 0,
-    sharesCount: 0,
-    date: DateTime.now(),
+    viewsCount: 10,
+    likesCount: 145,
+    sharesCount: 03,
+    date: DateTime(2021, 10, 02).toUtc(),
     comments: []);
 
 class News extends StatelessWidget {
