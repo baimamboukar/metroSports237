@@ -27,6 +27,7 @@ class ArticleDeatils extends StatelessWidget {
           ],
           expandedHeight: 180.0,
           flexibleSpace: FlexibleSpaceBar(
+              background: Image.asset(article.imagePath),
               collapseMode: CollapseMode.pin,
               stretchModes: [
                 StretchMode.blurBackground,

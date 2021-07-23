@@ -20,9 +20,7 @@ class ArticleTrailer extends StatelessWidget {
             leading: Container(
               height: 120.0,
               width: 100.0,
-              child: FlutterLogo(
-                style: FlutterLogoStyle.stacked,
-              ),
+              child: Image.asset(article.imagePath),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.green, width: .45),
                   borderRadius: BorderRadius.circular(20.0)),

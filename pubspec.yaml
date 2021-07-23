@@ -33,6 +33,7 @@ dependencies:
   hooks_riverpod: ^0.14.0
   get: ^4.2.0
   google_fonts:
+  flutter_hooks: ^0.18.0
 
 dev_dependencies:
   flutter_test:
