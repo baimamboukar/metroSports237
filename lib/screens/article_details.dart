@@ -17,17 +17,24 @@ class ArticleDeatils extends StatelessWidget {
         SliverAppBar(
           pinned: true,
           floating: true,
-          actions: [
-            IconButton(
-                icon: Icon(LineIcons.search),
-                onPressed: () => print("Looking for something")),
-            IconButton(
-                icon: Icon(LineIcons.shareSquareAlt),
-                onPressed: () => print("Sharing content")),
-          ],
+          // actions: [
+          //   IconButton(
+          //       icon: Icon(LineIcons.search),
+          //       onPressed: () => print("Looking for something")),
+          //   IconButton(
+          //       icon: Icon(LineIcons.shareSquareAlt),
+          //       onPressed: () => print("Sharing content")),
+          // ],
           expandedHeight: 180.0,
           flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(article.imagePath),
+              background: Container(
+                  decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      article.imagePath,
+                    )),
+              )),
               collapseMode: CollapseMode.pin,
               stretchModes: [
                 StretchMode.blurBackground,
@@ -63,8 +70,11 @@ class ArticleDeatils extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Author : ${article.author}"),
-                      Text(article.date.toString())
+                      Text(
+                        "Author : ${article.author}",
+                        style: Styles.designSubHeading(),
+                      ),
+                      Text("22 Jul 2021")
                     ],
                   ),
                   Row(

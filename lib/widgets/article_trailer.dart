@@ -20,9 +20,13 @@ class ArticleTrailer extends StatelessWidget {
             leading: Container(
               height: 120.0,
               width: 100.0,
-              child: Image.asset(article.imagePath),
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green, width: .45),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        article.imagePath,
+                      )),
+                  border: Border.all(color: Colors.green, width: 1.20),
                   borderRadius: BorderRadius.circular(20.0)),
             ),
             title: Text(article.title,
@@ -34,7 +38,9 @@ class ArticleTrailer extends StatelessWidget {
               children: [
                 Text("2021 Jul 19"),
                 Row(
-                  children: [Icon(LineIcons.fire)],
+                  children: [
+                    Icon(LineIcons.fire),
+                  ],
                 )
               ],
             )),
