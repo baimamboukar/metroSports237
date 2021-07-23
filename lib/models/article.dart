@@ -1,3 +1,5 @@
+import 'package:metro_sports/models/models.dart';
+
 class Article {
   final String title;
   final String subtitle;
@@ -5,7 +7,7 @@ class Article {
   final String author;
   final List<dynamic>? media;
   final DateTime date;
-  final List<String>? comments;
+  final List<CommentModel>? comments;
   final int likesCount;
   final int sharesCount;
 

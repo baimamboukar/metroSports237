@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:metro_sports/models/models.dart';
 import 'package:metro_sports/screens/screens.dart';
+import 'package:metro_sports/utils/utils.dart';
 
 class ArticleTrailer extends StatelessWidget {
   final Article article;
@@ -26,8 +27,10 @@ class ArticleTrailer extends StatelessWidget {
                   border: Border.all(color: Colors.green, width: .45),
                   borderRadius: BorderRadius.circular(20.0)),
             ),
-            title: Text("Leicester confirms siging a player from Salzbourg",
-                maxLines: 2, overflow: TextOverflow.ellipsis),
+            title: Text(article.title,
+                style: Styles.designSubHeading(),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

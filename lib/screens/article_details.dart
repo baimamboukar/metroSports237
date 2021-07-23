@@ -3,6 +3,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:metro_sports/models/models.dart';
 import 'package:metro_sports/utils/utils.dart';
 import 'package:metro_sports/widgets/action_button.dart';
+import 'package:metro_sports/widgets/widgets.dart';
 
 class ArticleDeatils extends StatelessWidget {
   final Article article;
@@ -110,15 +111,56 @@ class ArticleDeatils extends StatelessWidget {
             child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Container(
-              child: TextField(
-                maxLines: 6,
-                decoration: InputDecoration(hintText: "Leave a comment..."),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0, top: 4.0),
+                    child: Row(
+                      children: [
+                        Icon(LineIcons.userCircle, size: 32.0),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                        Text("Alpha user")
+                      ],
+                    ),
+                  ),
+                  TextField(
+                    maxLines: 2,
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(14.0),
+                        hintText: "Leave a comment...",
+                        border: InputBorder.none),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ActionButton(
+                            icon: Icons.chat_bubble,
+                            color: Palette.primary,
+                            label: "comment",
+                            callback: () => print("viewed")),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              height: 100.0,
               decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
                   borderRadius: BorderRadius.circular(22.0),
-                  border: Border.all(color: Palette.primary, width: 0.75))),
-        ))
+                  border: Border.all(color: Palette.primary, width: 1.50))),
+        )),
+        SliverToBoxAdapter(
+          child: Column(
+            children: [
+              ...article.comments!
+                  .map((comment) => Comment(model: comment))
+                  .toList()
+            ],
+          ),
+        )
       ],
     ));
   }
